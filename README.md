@@ -1,6 +1,6 @@
 # TapPay
 
-A very simple [TapPay](https://www.tappaysdk.com/tch) API Wrapper.
+A very simple [TapPay](https://www.tappaysdk.com/tch) API wrapper written in the Ruby language.
 
 ## Installation
 
@@ -23,8 +23,8 @@ See [TapPay Backend API](https://docs.tappaysdk.com/tutorial/zh/back.html#back).
 
 ## Usage
 
-You need to setup env, partner_key and merchant_id. 
-The partner_key and merchant_id are optional, you could also specify them in request params.
+You can setup env, partner_key and merchant_id. 
+The partner_key and merchant_id are optional, thay could also be specified in request params.
 
 ```ruby
 TapPay.setup do |config|
