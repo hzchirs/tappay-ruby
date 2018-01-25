@@ -1,5 +1,8 @@
 # TapPay
 
+[![Build Status](https://travis-ci.org/hzchirs/tappay-ruby.svg?branch=master)](https://travis-ci.org/hzchirs/tappay-ruby)
+[![Maintainability](https://api.codeclimate.com/v1/badges/1bc81b37e0025c3de443/maintainability)](https://codeclimate.com/github/hzchirs/tappay-ruby/maintainability)
+
 A very simple [TapPay](https://www.tappaysdk.com/tch) API wrapper written in the Ruby language.
 
 ## Installation
