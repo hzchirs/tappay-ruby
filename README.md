@@ -23,7 +23,7 @@ See [TapPay Backend API](https://docs.tappaysdk.com/tutorial/zh/back.html#back).
 
 ## Usage
 
-You can setup mode, partner_key and merchant_id. It requests sandbox server or production server by mode.
+You need to setup mode which affects requests sent to sandbox or production server.
 The partner_key and merchant_id are optional, thay could also be specified in request params.
 
 ```ruby
