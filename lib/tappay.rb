@@ -7,7 +7,7 @@ require 'tappay/pay_by_token'
 require 'tappay/refund'
 
 module TapPay
-  @@env = :sandbox
+  @@mode = :sandbox
   @@partner_key = ''
   @@merchant_id = ''
 
@@ -16,8 +16,8 @@ module TapPay
       yield(self)
     end
 
-    def env=(env)
-      @@env = env
+    def mode=(mode)
+      @@mode = mode
     end
 
     def partner_key=(partner_key)
@@ -28,8 +28,8 @@ module TapPay
       @@merchant_id = merchant_id.to_s
     end
 
-    def env
-      @@env
+    def mode
+      @@mode
     end
 
     def partner_key

@@ -1,7 +1,7 @@
 module TapPay
   module APIResource
     def self.base_url
-      if TapPay.env == :production
+      if TapPay.mode == :production
         'https://prod.tappaysdk.com'
       else
         'https://sandbox.tappaysdk.com'

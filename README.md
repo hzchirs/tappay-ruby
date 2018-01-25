@@ -23,12 +23,12 @@ See [TapPay Backend API](https://docs.tappaysdk.com/tutorial/zh/back.html#back).
 
 ## Usage
 
-You can setup env, partner_key and merchant_id. It requests sandbox server or production server by env.
+You can setup mode, partner_key and merchant_id. It requests sandbox server or production server by mode.
 The partner_key and merchant_id are optional, thay could also be specified in request params.
 
 ```ruby
 # sandbox or production
-TapPay.env = :sandbox
+TapPay.mode = :sandbox
 
 TapPay.setup do |config|
   config.partner_key = 'your_partner_key' # optional
