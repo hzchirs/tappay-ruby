@@ -3,7 +3,7 @@ require 'json'
 
 module TapPay
   class Request
-    def self.send(url, params = {}, &block)
+    def self.post(url, params = {}, &block)
       payload = default_params.merge(params).to_json
       uri     = URI(url)
       req     = Net::HTTP::Post.new(uri)

@@ -1,15 +1,4 @@
 RSpec.describe TapPay do
-  PRIME  = "test_3a2fb2b7e892b914a03c95dd4dd5dc7970c908df67a49527c0a648b2bc9"
-  MERCHANT_ID = "GlobalTesting_CTBC"
-  PARTNER_KEY = "partner_6ID1DoDlaPrfHw6HBZsULfTYtDmWs0q0ZZGKMBpp4YICWBxgK97eK3RM"
-
-  before :each do
-    TapPay.setup do |config|
-      config.partner_key = PARTNER_KEY
-      config.merchant_id = MERCHANT_ID
-    end
-  end
-
   it "has a version number" do
     expect(TapPay::VERSION).not_to be nil
   end
