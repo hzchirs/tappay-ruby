@@ -7,7 +7,9 @@ require 'tappay/pay_by_token'
 require 'tappay/refund'
 
 module TapPay
-  @@mode = :sandbox
+  @@mode        = :sandbox
+  @@app_id      = ''
+  @@app_key     = ''
   @@partner_key = ''
   @@merchant_id = ''
 
@@ -28,6 +30,14 @@ module TapPay
       @@merchant_id = merchant_id.to_s
     end
 
+    def app_id=(app_id)
+      @@app_id = app_id
+    end
+
+    def app_key=(app_key)
+      @@app_key = app_key
+    end
+
     def mode
       @@mode
     end
@@ -38,6 +48,14 @@ module TapPay
 
     def merchant_id
       @@merchant_id
+    end
+
+    def app_id
+      @@app_id
+    end
+
+    def app_key
+      @@app_key
     end
 
     def pay_by_prime(payload, &block)
