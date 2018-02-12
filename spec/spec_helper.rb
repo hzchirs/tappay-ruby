@@ -2,7 +2,7 @@ require "bundler/setup"
 require "tappay"
 require 'webmock/rspec'
 
-WebMock.allow_net_connect!
+WebMock.disable_net_connect!
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
