@@ -3,6 +3,7 @@ require "tappay/version"
 
 require 'tappay/request'
 require 'tappay/api_resources'
+require 'tappay/card'
 require 'tappay/payment'
 require 'tappay/transaction'
 
