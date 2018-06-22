@@ -17,6 +17,8 @@ RSpec.configure do |config|
 
   config.before(:each) do
     TapPay.mode = :sandbox
-    stub_request(:any, /^#{TapPay::APIResource.base_url}/).to_return(body: "{}")
+    @base_url   = 'https://sandbox.tappaysdk.com/tpc/'
+
+    stub_request(:any, /tappaysdk\.com/).to_return(body: "{}")
   end
 end

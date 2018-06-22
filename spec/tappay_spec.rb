@@ -7,7 +7,7 @@ RSpec.describe TapPay do
     it 'requests pay by prime url' do
       res = TapPay.pay_by_prime({ a: 1 })
 
-      expect(WebMock).to have_requested(:post, TapPay::APIResource.pay_by_prime_url)
+      expect(WebMock).to have_requested(:post, @base_url + 'payment/pay-by-prime')
     end
   end
 
@@ -15,7 +15,7 @@ RSpec.describe TapPay do
     it 'requests pay by token url' do
       res = TapPay.pay_by_token({ a: 1 })
 
-      expect(WebMock).to have_requested(:post, TapPay::APIResource.pay_by_token_url)
+      expect(WebMock).to have_requested(:post, @base_url + 'payment/pay-by-token')
     end
   end
 
@@ -23,7 +23,7 @@ RSpec.describe TapPay do
     it 'requests refund url' do
       res = TapPay.refund({ a: 1 })
 
-      expect(WebMock).to have_requested(:post, TapPay::APIResource.refund_url)
+      expect(WebMock).to have_requested(:post, @base_url + 'transaction/refund')
     end
   end
 end
