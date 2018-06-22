@@ -1,10 +1,10 @@
+require 'forwardable'
 require "tappay/version"
 
 require 'tappay/request'
-require 'tappay/api_resource'
-require 'tappay/pay_by_prime'
-require 'tappay/pay_by_token'
-require 'tappay/refund'
+require 'tappay/api_resources'
+require 'tappay/payment'
+require 'tappay/transaction'
 
 module TapPay
   @mode        = :sandbox
@@ -14,6 +14,10 @@ module TapPay
   @merchant_id = ''
 
   class << self
+    extend Forwardable
+    def_delegators TapPay::Payment, :pay_by_prime, :pay_by_token
+    def_delegators TapPay::Transaction, :refund
+
     def setup
       yield(self)
     end
@@ -56,18 +60,6 @@ module TapPay
 
     def app_key
       @app_key
-    end
-
-    def pay_by_prime(payload, &block)
-      TapPay::PayByPrime.call(payload, &block)
-    end
-
-    def pay_by_token(payload, &block)
-      TapPay::PayByToken.call(payload, &block)
-    end
-
-    def refund(payload, &block)
-      TapPay::Refund.call(payload, &block)
     end
   end
 end
