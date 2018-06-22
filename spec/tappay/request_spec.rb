@@ -25,6 +25,10 @@ RSpec.describe TapPay::Request do
       expect(res['status']).to eq 0
       expect(res['rec_trade_id']).to eq('12345') 
 
+      # support object access
+      expect(res.status).to eq 0
+      expect(res.rec_trade_id).to eq('12345') 
+
       # Block style
       TapPay::Request.post(fake_url, { test: 1 }) do |res|
         expect(res['status']).to eq 0
