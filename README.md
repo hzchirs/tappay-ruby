@@ -27,7 +27,7 @@ See [TapPay Backend API](https://docs.tappaysdk.com/tutorial/zh/back.html#back).
 ## Usage
 
 You need to setup mode which affects requests sent to sandbox or production server.
-The partner_key and merchant_id are optional, thay could also be specified in request params.
+The partner_key and merchant_id are optional, they could also be specified in request params.
 
 ```ruby
 # sandbox or production
@@ -98,6 +98,50 @@ TapPay.refund(params) do |res|
   res 
 end
 ```
+
+### Card
+```ruby
+# bind
+params = {
+  currency: 'TWD',
+  cardholder: {
+        phone_number: "+886923456789",
+        name: "Jane Doe",
+        email: "Jane@Doe.com",
+        zip_code: "12345",
+        address: "123 1st Avenue, City, Country",
+        national_id: "A123456789"
+  }
+}
+
+TapPay::Card.bind(params) do |res|
+  res
+end
+
+# remove
+params = {
+  card_key: "your_card_key",
+  card_token: "your_card_token"
+}
+
+TapPay::Card.remove(params) do |res|
+  res
+end
+```
+
+### Transaction
+```ruby
+# cap
+TapPay::Transaction.cap(params) do |res|
+  res
+end
+
+# trade-history
+TapPay::Transaction.trade_history(params) do |res|
+  res
+end
+```
+
 ## License
 
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
