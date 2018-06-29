@@ -1,6 +1,5 @@
 require 'net/http'
 require 'json'
-require 'ostruct'
 
 module TapPay
   class Request
@@ -16,7 +15,7 @@ module TapPay
       res = Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) { |http|
         http.request(req)
       }
-      res_json = JSON.parse(res.body, object_class: OpenStruct)
+      res_json = JSON.parse(res.body)
 
       block_given? ? yield(res_json) : res_json
     end
