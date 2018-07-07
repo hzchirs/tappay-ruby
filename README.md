@@ -26,6 +26,8 @@ See [TapPay Backend API](https://docs.tappaysdk.com/tutorial/zh/back.html#back).
 
 ## Usage
 
+**Settings**
+
 You need to setup mode which affects requests sent to sandbox or production server.
 The partner_key and merchant_id are optional, they could also be specified in request params.
 
@@ -39,6 +41,39 @@ TapPay.setup do |config|
 end
 ```
 
+**Map API Resources to Module and Action**
+
+It is easy to map api resources to the TapPay module's namespace and action. 
+For example, the **pay by prime** api is: 
+https://sandbox.tappaysdk.com/tpc/payment/pay-by-prime , 
+the last two parts `payment` and `pay-by-prime` are mapped to
+namespace `Payment` and action `pay_by_prime`, so it could be called by
+`TapPay::Payment.pay_by_prime(params)`.
+
+Another example is *bind card*, the bind card api is: 
+https://sandbox.tappaysdk.com/tpc/card/bind , so the api could be called by `TapPay::Card.bind(params)` as you expect.
+
+### Supported APIs
+**Payment**
+
+  * pay_by_prime
+  * pay_by_token
+
+**Card**
+
+  * bind
+  * remove
+
+**Transaction**
+
+  * cap
+  * query
+  * refund
+  * trade_history
+
+For more details about api request params and responses, please refer to the [TapPay Backend API Documentation](https://docs.tappaysdk.com/tutorial/zh/back.html#back).
+
+## More Examples
 ### Pay By Prime
 ```ruby
 params = {
@@ -56,13 +91,13 @@ params = {
   remember: true
 }
 
-res = TapPay.pay_by_prime(params)
+res = TapPay::Payment.pay_by_prime(params)
 res #=> {"status"=>0, "msg"=>"Success", "amount"=>100, ...}
 res['status'] #=> 0
 res['msg'] #=> Success
 
 # Block Style
-TapPay.pay_by_prime(params) do |res|
+TapPay::Payment.pay_by_prime(params) do |res|
   res #=> {"status"=>0, "msg"=>"Success", "amount"=>100, ...}
 end
 ```
@@ -77,10 +112,10 @@ params = {
   details: "An apple and a pen."
 }
 
-res = TapPay.pay_by_token(params)
+res = TapPay::Payment.pay_by_token(params)
 
 # Block Style
-TapPay.pay_by_token(params) do |res|
+TapPay::Payment.pay_by_token(params) do |res|
   res #=> {"status"=>0, "msg"=>"Success", "amount"=>100, ...}
 end
 ```
@@ -91,10 +126,10 @@ params = {
   rec_trade_id: 'your_rec_trade_id'
 }
 
-res = TapPay.refund(params)
+res = TapPay::Transaction.refund(params)
 
 # Block Style
-TapPay.refund(params) do |res|
+TapPay::Transaction.refund(params) do |res|
   res 
 end
 ```
@@ -129,18 +164,6 @@ TapPay::Card.remove(params) do |res|
 end
 ```
 
-### Transaction
-```ruby
-# cap
-TapPay::Transaction.cap(params) do |res|
-  res
-end
-
-# trade-history
-TapPay::Transaction.trade_history(params) do |res|
-  res
-end
-```
 
 ## License
 
