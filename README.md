@@ -138,6 +138,7 @@ end
 ```ruby
 # bind
 params = {
+  prime: 'test_3a2fb2b7e892b914a03c95dd4dd5dc7970c908df67a49527c0a648b2bc9',
   currency: 'TWD',
   cardholder: {
         phone_number: "+886923456789",
