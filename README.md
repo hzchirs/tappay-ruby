@@ -32,12 +32,9 @@ You need to setup mode which affects requests sent to sandbox or production serv
 The partner_key and merchant_id are optional, they could also be specified in request params.
 
 ```ruby
-# sandbox or production
-TapPay.mode = :sandbox
-
 TapPay.setup do |config|
+  config.mode = Rails.env.production? ? :production : :sandbox # sandbox or production
   config.partner_key = 'your_partner_key' # optional
-  config.merchant_id = 'your_merchant_id' # optional
 end
 ```
 
@@ -78,6 +75,7 @@ For more details about api request params and responses, please refer to the [Ta
 ```ruby
 params = {
   prime: 'test_3a2fb2b7e892b914a03c95dd4dd5dc7970c908df67a49527c0a648b2bc9',
+  merchant_id: 'your_merchant_id',
   details: "TapPay Test",
   amount: 100,
   cardholder: {
@@ -105,6 +103,7 @@ end
 ### Pay By Token
 ```ruby
 params = {
+  merchant_id: 'your_merchant_id',
   card_key: 'your_card_key_after_pay_by_prime_with_remember_true',
   card_token: 'your_card_token_after_pay_by_prime_with_remember_true',
   amount: 1,
@@ -139,6 +138,7 @@ end
 # bind
 params = {
   prime: 'test_3a2fb2b7e892b914a03c95dd4dd5dc7970c908df67a49527c0a648b2bc9',
+  merchant_id: 'your_merchant_id',
   currency: 'TWD',
   cardholder: {
         phone_number: "+886923456789",
@@ -169,4 +169,3 @@ end
 ## License
 
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
-
