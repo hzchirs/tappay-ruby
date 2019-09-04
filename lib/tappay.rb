@@ -12,7 +12,6 @@ module TapPay
   @app_id      = ''
   @app_key     = ''
   @partner_key = ''
-  @merchant_id = ''
 
   class << self
     extend Forwardable
@@ -58,10 +57,6 @@ module TapPay
 
     def partner_key
       @partner_key
-    end
-
-    def merchant_id
-      @merchant_id
     end
 
     def app_id
