@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Removed support for Ruby 2.0
 
 ## [1.0.1] - 2019-09-05
-* Added deprecation warning when setting merchant_id in config options.
+* Added deprecation warning when setting merchant_id, app_id, app_key in config options.
 
 ## [1.0.0] - 2018-06-29
 * Use semantic versioning.
