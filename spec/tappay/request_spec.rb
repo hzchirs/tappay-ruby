@@ -13,7 +13,7 @@ RSpec.describe TapPay::Request do
     end
 
     it "requests with body has default partner_key and merchant_id" do
-      res = TapPay::Request.post(fake_url, { test: 1 })
+      TapPay::Request.post(fake_url, { test: 1 })
 
       expect(WebMock).to have_requested(:post, fake_url)
         .with(body: { test: 1, partner_key: PARTNER_KEY, merchant_id: "" })
@@ -23,18 +23,18 @@ RSpec.describe TapPay::Request do
       res = TapPay::Request.post(fake_url, { test: 1 })
 
       expect(res['status']).to eq 0
-      expect(res['rec_trade_id']).to eq('12345') 
+      expect(res['rec_trade_id']).to eq('12345')
 
       # Block style
       TapPay::Request.post(fake_url, { test: 1 }) do |res|
         expect(res['status']).to eq 0
-        expect(res['rec_trade_id']).to eq('12345') 
+        expect(res['rec_trade_id']).to eq('12345')
       end
     end
 
     context 'if params do not have partner_key' do
       it "requests header x-api-key's value is default partner_key" do
-        res = TapPay::Request.post(fake_url, { test: 1 })
+        TapPay::Request.post(fake_url, { test: 1 })
 
         expect(WebMock).to have_requested(:post, fake_url)
           .with(headers: { 'x-api-key' => PARTNER_KEY })
