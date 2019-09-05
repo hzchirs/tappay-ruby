@@ -32,6 +32,11 @@ module TapPay
     end
 
     def merchant_id=(merchant_id)
+      warn <<-DEPRECATION_WARNING
+        [Deprecation] setting `merchant_id` in config options will be deprecated in the future releases.
+        It is recommaned to pass `merchant_id` to request params directly.
+      DEPRECATION_WARNING
+
       @merchant_id = merchant_id.to_s
     end
 
