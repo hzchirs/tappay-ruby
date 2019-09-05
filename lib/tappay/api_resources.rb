@@ -1,21 +1,21 @@
 module TapPay
   module APIResources
     CARD = [
-      'bind'.freeze,
-      'remove'.freeze
-    ]
+      'bind',
+      'remove'
+    ].freeze
 
     PAYMENT = [
-      'pay_by_prime'.freeze,
-      'pay_by_token'.freeze
-    ]
+      'pay_by_prime',
+      'pay_by_token'
+    ].freeze
 
     TRANSACTION = [
-      'cap'.freeze,
-      'query'.freeze,
-      'refund'.freeze,
-      'trade_history'.freeze
-    ]
+      'cap',
+      'query',
+      'refund',
+      'trade_history'
+    ].freeze
 
     def base_url
       if TapPay.mode == :production
