@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 require 'forwardable'
-require "tappay/version"
+require 'tappay/version'
 
 require 'tappay/request'
 require 'tappay/api_resources'
