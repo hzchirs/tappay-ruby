@@ -1,0 +1,23 @@
+name: Ruby Gem
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        ruby: [2.6, 2.5, 2.4]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Ruby version
+      uses: actions/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby }}
+    - name: Build and test with Rake
+      run: |
+        gem install bundler
+        bundle install --jobs 4 --retry 3
+        bundle exec rake
