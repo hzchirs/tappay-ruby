@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 require 'forwardable'
-require "tappay/version"
+require 'tappay/version'
 
 require 'tappay/request'
 require 'tappay/api_resources'
@@ -8,11 +10,12 @@ require 'tappay/payment'
 require 'tappay/transaction'
 
 module TapPay
+  VALID_MODES = [:sandbox, :production].freeze
+
   @mode        = :sandbox
   @app_id      = ''
   @app_key     = ''
   @partner_key = ''
-  @merchant_id = ''
 
   class << self
     extend Forwardable
@@ -24,32 +27,15 @@ module TapPay
     end
 
     def mode=(mode)
+      unless VALID_MODES.include?(mode)
+        raise ArgumentError, "Invalid mode! mode must be one of `#{VALID_MODES}`"
+      end
+
       @mode = mode
     end
 
     def partner_key=(partner_key)
       @partner_key = partner_key.to_s
-    end
-
-    def merchant_id=(merchant_id)
-      warn <<-DEPRECATION_WARNING
-        [Deprecation] setting `merchant_id` in config options will be deprecated in the future releases.
-        It is recommaned to pass `merchant_id` to request params directly.
-      DEPRECATION_WARNING
-
-      @merchant_id = merchant_id.to_s
-    end
-
-    def app_id=(app_id)
-      warn '[Deprecation] setting `app_id` in config options will be deprecated in the future releases.'
-
-      @app_id = app_id
-    end
-
-    def app_key=(app_key)
-      warn '[Deprecation] setting `app_key` in config options will be deprecated in the future releases.'
-
-      @app_key = app_key
     end
 
     def mode
@@ -58,18 +44,6 @@ module TapPay
 
     def partner_key
       @partner_key
-    end
-
-    def merchant_id
-      @merchant_id
-    end
-
-    def app_id
-      @app_id
-    end
-
-    def app_key
-      @app_key
     end
   end
 end

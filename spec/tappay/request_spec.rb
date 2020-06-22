@@ -12,11 +12,11 @@ RSpec.describe TapPay::Request do
       TapPay.partner_key = PARTNER_KEY
     end
 
-    it "requests with body has default partner_key and merchant_id" do
+    it "requests with body has default partner_key" do
       TapPay::Request.post(fake_url, { test: 1 })
 
       expect(WebMock).to have_requested(:post, fake_url)
-        .with(body: { test: 1, partner_key: PARTNER_KEY, merchant_id: "" })
+        .with(body: { test: 1, partner_key: PARTNER_KEY })
     end
 
     it 'returns response body in json format' do

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'net/http'
 require 'json'
 
@@ -21,11 +23,9 @@ module TapPay
     end
 
     def self.default_params
-      params = {}
-      params[:partner_key] = TapPay.partner_key unless TapPay.partner_key.nil?
-      params[:merchant_id] = TapPay.merchant_id unless TapPay.merchant_id.nil?
-
-      params
+      {
+        partner_key: TapPay.partner_key
+      }
     end
 
     private_class_method :default_params
