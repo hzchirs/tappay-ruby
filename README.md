@@ -41,14 +41,15 @@ end
 **Map API Resources to Module and Action**
 
 It is easy to map api resources to the TapPay module's namespace and action. 
-For example, the **pay by prime** api is: 
+For example, the **pay by prime** api: 
 https://sandbox.tappaysdk.com/tpc/payment/pay-by-prime , 
-the last two parts `payment` and `pay-by-prime` are mapped to
-namespace `Payment` and action `pay_by_prime`, so it could be called by
+the last two parts of the url `payment` and `pay-by-prime` are mapped to
+namespace `Payment` and action `pay_by_prime`, so it can be called by
 `TapPay::Payment.pay_by_prime(params)`.
 
-Another example is *bind card*, the bind card api is: 
-https://sandbox.tappaysdk.com/tpc/card/bind , so the api could be called by `TapPay::Card.bind(params)` as you expect.
+Another example is *bind card*, the bind card api: 
+https://sandbox.tappaysdk.com/tpc/card/bind , the last two parts of the url are`card` and `bind`,
+so the api can be called by `TapPay::Card.bind(params)` as you expect.
 
 ### Supported APIs
 **Payment**
