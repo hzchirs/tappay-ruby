@@ -28,8 +28,8 @@ See [TapPay Backend API](https://docs.tappaysdk.com/tutorial/zh/back.html#back).
 
 **Settings**
 
-You need to setup mode which affects requests sent to sandbox or production server.
-The partner_key and merchant_id are optional, they could also be specified in request params.
+You need to setup mode which affects the requests sent to sandbox or production server.
+The partner_key is optional, they could also be specified in request params.
 
 ```ruby
 TapPay.setup do |config|
@@ -43,8 +43,9 @@ end
 It is easy to map api resources to the TapPay module's namespace and action. 
 For example, the **pay by prime** api: 
 https://sandbox.tappaysdk.com/tpc/payment/pay-by-prime , 
-the last two parts of the url `payment` and `pay-by-prime` are mapped to
-namespace `Payment` and action `pay_by_prime`, so it can be called by
+the last two parts of the url are `payment` and `pay-by-prime`. The first part `payment`
+is mapped to namespace `Payment`, and the last part `pay-by-prime` is
+mapped to action `pay_by_prime`, so it can be called by
 `TapPay::Payment.pay_by_prime(params)`.
 
 Another example is *bind card*, the bind card api: 
